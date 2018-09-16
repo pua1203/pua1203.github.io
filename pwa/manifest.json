@@ -1,0 +1,19 @@
+{
+  "name": "Blog",
+  "short_name": "Blog",
+  "description": "A personal blog by iOS Reverse engineer",
+  "icons": [{
+    "src": "icons/pwa_icon_36.png",
+    "sizes": "36x36",
+    "type": "image/png"
+  }, {
+    "src": "icons/pwa_icon_96.png",
+    "sizes": "96x96",
+    "type": "image/png"
+  }],
+  "background_color": "#fff",
+  "theme_color": "#000",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}
