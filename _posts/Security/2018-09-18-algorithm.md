@@ -11,6 +11,12 @@ subtitle: AES、DES C语言实现与原理
 
 
 
+# 前言
+
+https://kunnan.github.io/2018/08/16/Security/
+
+
+
 # Data Encryption Standard
 
 
