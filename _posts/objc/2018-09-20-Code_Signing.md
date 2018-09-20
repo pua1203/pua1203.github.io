@@ -92,6 +92,8 @@ keychain 的证书助手来申请公私钥。生成的 `CertificateSigningReques
 
 # See Also 
 
+>* [xcodegen: 我是不太喜欢使用它](https://mp.weixin.qq.com/s?__biz=MzI5NjAwNjg1Nw==&mid=2457137228&idx=1&sn=3f2e42f142c190931c35bebcbd2a2e1b&chksm=fbcab5eaccbd3cfc3dc711234a032d5895dfcb4c97ca5c5a5a723fb1837dc69d9abc68a24893&scene=21#wechat_redirect)
+>  * brew install xcodegen
 >* [黑幕背后的 Code Signing](https://mp.weixin.qq.com/s?__biz=MzI5NjAwNjg1Nw==&mid=2457137240&idx=1&sn=6bcb062dcc29ecf2473d46387969d7a1&scene=19#wechat_redirect)
 >* newpost 
 >
