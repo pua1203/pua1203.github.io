@@ -49,10 +49,9 @@ https://github.com/AloneMonkey/algorithm
 
 # See Also 
 
->* [Hikari的Swift移植](http://iosre.com/t/hikari-swift/12177?u=zhangkn)
+>* [**cocoahuke.github.io](https://github.com/cocoahuke/cocoahuke.github.io)
 >
->  [
->  ](http://iosre.com/c/essence-sharing)](http://iosre.com/t/hikari-swift/12177?u=zhangkn)
+>* [Hikari的Swift移植](http://iosre.com/t/hikari-swift/12177?u=zhangkn)
 >
 >* * [HikariObfuscator/Swift ](https://github.com/HikariObfuscator/Swift/blob/master/README.md)
 >

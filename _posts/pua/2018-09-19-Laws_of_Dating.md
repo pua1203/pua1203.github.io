@@ -11,8 +11,9 @@ subtitle: Build a powerful, capable self-image that you love.
 
 
 
-* Stop making identity meaning out of external events.
-* See yourself as "high status."
+#  Confidence
+
+* See yourself as "high status."----- 自信
   * 用很少话讲清楚地事情
   * 面对社交价值比你高的时候，我们需要他们的认可，我们的回答是完整严密。同理如果你想要高的社交价值，就不要：`问题的回答过于完美完整`
     * 转换话题: 
@@ -60,9 +61,7 @@ subtitle: Build a powerful, capable self-image that you love.
 
 >* [在阿里云上安装 Docker](https://meta.discoursecn.org/t/%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%8A%E5%AE%89%E8%A3%85-Docker/27)
 >  * 
->* [30 分钟内在云上部署 Discourse](https://meta.discoursecn.org/t/topic/26)
->
->  * [在 Digital Ocean 上部署 Discourse 是相似的](https://meta.discoursecn.org/t/30-digital-ocean-discourse/26)
+>* * [在 Digital Ocean 上部署 Discourse 是相似的](https://meta.discoursecn.org/t/30-digital-ocean-discourse/26)
 >* newpost 
 >
 ```
