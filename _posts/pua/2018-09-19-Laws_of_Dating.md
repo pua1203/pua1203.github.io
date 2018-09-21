@@ -13,6 +13,11 @@ subtitle: Build a powerful, capable self-image that you love.
 
 * Stop making identity meaning out of external events.
 * See yourself as "high status."
+  * 用很少话讲清楚地事情
+  * 面对社交价值比你高的时候，我们需要他们的认可，我们的回答是完整严密。同理如果你想要高的社交价值，就不要：`问题的回答过于完美完整`
+    * 转换话题: 
+    * 用冷读岔开话题，夺回控制权:`我觉得你刚才问我问题的样子很可爱。`
+    * `除非给你回话，也就是有反馈，，否则就不要说太多。在实战中，你可以用休止谈话法和故意制造尴尬沉默法来迫使对方做出反馈，给你回话。`
   * 去掉小动作
   * 肩膀不要绷得太紧。要面带笑容
   * 讲话语速要慢
