@@ -12,8 +12,13 @@ subtitle: Build a powerful, capable self-image that you love.
 
 
 * Stop making identity meaning out of external events.
-
 * See yourself as "high status."
+  * 去掉小动作
+  * 肩膀不要绷得太紧。要面带笑容
+  * 讲话语速要慢
+  * 去掉习惯性口头语
+  * 讲笑话的时候，切记自己不要先笑
+  * 用男人底气十足的语气开玩笑地说，`"你刚才说的我一个字都没听清楚（看着她，沉默几秒钟）。。。。。但是，你刚才讲话的样子很可爱。"`加上坏笑，整个时候你都深深地看着她的眼睛，同时记住讲话要稳，要慢。你自己吐字发音要清楚。
 
 
 

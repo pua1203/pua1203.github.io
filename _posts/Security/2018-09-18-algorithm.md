@@ -49,7 +49,15 @@ https://github.com/AloneMonkey/algorithm
 
 # See Also 
 
+>* [Hikari的Swift移植](http://iosre.com/t/hikari-swift/12177?u=zhangkn)
+>
+>  [
+>  ](http://iosre.com/c/essence-sharing)](http://iosre.com/t/hikari-swift/12177?u=zhangkn)
+>
+>* * [HikariObfuscator/Swift ](https://github.com/HikariObfuscator/Swift/blob/master/README.md)
+>
 >* [aes-and-des](http://www.alonemonkey.com/2016/05/25/aes-and-des/)
+>
 >* newpost 
 >
 ```
