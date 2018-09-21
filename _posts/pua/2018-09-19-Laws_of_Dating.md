@@ -53,6 +53,11 @@ subtitle: Build a powerful, capable self-image that you love.
 
 # See Also 
 
+>* [在阿里云上安装 Docker](https://meta.discoursecn.org/t/%E5%9C%A8%E9%98%BF%E9%87%8C%E4%BA%91%E4%B8%8A%E5%AE%89%E8%A3%85-Docker/27)
+>* [
+>  ](https://meta.discoursecn.org/c/zhi-nan)](https://meta.discoursecn.org/t/topic/26)
+>* [30 分钟内在云上部署 Discourse](https://meta.discoursecn.org/t/topic/26)
+>  * [在 Digital Ocean 上部署 Discourse 是相似的](https://meta.discoursecn.org/t/30-digital-ocean-discourse/26)
 >* newpost 
 >
 ```
