@@ -6,7 +6,7 @@ tag: Knowledge_is_power
 site: https://zhangkn.github.io
 catalog: true
 author: kunnan
-subtitle: 怎样让孩子爱上学习: 反馈，有边界的进行奖励、对孩子的未来保持谦虚和敬畏的心态进行面对面的交流，以身作则
+subtitle: 反馈、有边界的进行奖励、对孩子的未来保持谦虚和敬畏的心态进行面对面的交流，以身作则
 ---
 
 
