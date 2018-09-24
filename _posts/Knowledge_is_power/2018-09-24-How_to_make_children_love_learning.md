@@ -96,6 +96,7 @@ subtitle: 怎样让孩子爱上学习: 反馈，有边界的进行奖励、对�
 
 # See Also 
 
+>* ![image](https://ws2.sinaimg.cn/large/af39b376gy1fvkq316hiaj21hc0u0kjl.jpg)
 >* newpost 
 >
 ```
