@@ -11,7 +11,12 @@ subtitle: Build a powerful, capable self-image that you love.
 
 
 
+# 前言
 
+
+
+* 目的性很重要
+  * 我们只追求属于我们的，不眼红自己难以做到的
 
 # **comfortable-feeling**
 
