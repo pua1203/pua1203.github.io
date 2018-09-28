@@ -62,6 +62,9 @@ subtitle: “入伙式”求职
 
 # See Also 
 
+>* https://github.com/liuguoquan727/notes/tree/3e92f0905cea84b3593ab55fcc0b50234219a0fa/theory
+>* https://piccdn.luojilab.com/fe-oss/igetcms/1537278747354/%E7%9F%A5%E8%AF%86%E5%B0%B1%E6%98%AF%E5%8A%9B%E9%87%8FS01E09.pdf
+>* https://www.igetget.com/talkshow
 >* [第590期 | “入伙式”求职](https://m.igetget.com/share/course/article/article_id/82459)
 >* https://github.com/search?q=https%3A%2F%2Fm.igetget.com%2F&type=Code
 >* newpost 
