@@ -11,7 +11,7 @@ subtitle: com.tencent.xinWeChat
 
 # 前言
 
-
+/Applications/WeChat.app/Contents/MacOS/WeChat
 
 #### 0x00 传统多开方法
 
@@ -79,8 +79,29 @@ Instance is already running!
 
 
 
+
+
+#  swiftOCclass-dump
+
+
+
+
+
+
+
+* **➜**  **/Applications** file /Applications/WeChat.app/Contents/MacOS/WeChat
+
+/Applications/WeChat.app/Contents/MacOS/WeChat: Mach-O 64-bit executable x86_64
+
+*  swiftOCclass-dump  --arch x86_64 /Applications/WeChat.app/Contents/MacOS/WeChat -H -o  /Users/devzkn/decrypted/MacOSWeChat/head  
+
 # See Also 
 
+>* [Mac应用插件](https://github.com/AloneMonkey/MonkeyDev/wiki/Mac%E5%BA%94%E7%94%A8%E6%8F%92%E4%BB%B6)
+>  * [get-start-with-mac-reverse](http://www.alonemonkey.com/2017/05/31/get-start-with-mac-reverse/)
+>* [一个类似于 Cydia Substrate 的工具，可以用来向 Mac App 注入插件](http://iosre.com/t/macsubstrate-mac-app-ios-cydia-substrate/9802)
+>  * 注入到 `launchd` 还要关 `SIP`, 很少有人会选择关 `SIP`.
+>  * 还是 `DYLD_INSERT_LIBRARIES` or `inject load_command` 来的方便啊.
 >* newpost 
 >
 ```
