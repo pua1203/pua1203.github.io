@@ -13,6 +13,10 @@ subtitle: com.tencent.xinWeChat
 
 /Applications/WeChat.app/Contents/MacOS/WeChat
 
+
+
+![image](https://ws2.sinaimg.cn/large/006tBeITgy1fvqqf92wvzj30g1095t9l.jpg)
+
 #### 0x00 传统多开方法
 
 
@@ -94,6 +98,48 @@ Instance is already running!
 /Applications/WeChat.app/Contents/MacOS/WeChat: Mach-O 64-bit executable x86_64
 
 *  swiftOCclass-dump  --arch x86_64 /Applications/WeChat.app/Contents/MacOS/WeChat -H -o  /Users/devzkn/decrypted/MacOSWeChat/head  
+
+
+
+# EntryPoint
+
+
+
+```
+function EntryPoint {
+    r13 = objc_autoreleasePoolPush();
+    if ([CUtility HasWechatInstance] != 0x0) {
+            rbx = [[NSString alloc] initWithFormat:@"ERROR: Instance is already running!"];
+            stack[0] = "main";
+            [MMLogger logWithMMLogLevel:0x2 module:0x0 file:0x101da4c18 line:0x15 func:stack[0] message:rbx];
+            rdi = rbx;
+    }
+    else {
+            sub_10029fcf4();
+            r14 = [[WeChatApplication sharedApplication] retain];
+            rbx = [[NSBundle mainBundle] retain];
+            r15 = [rbx respondsToSelector:@selector(loadNibNamed:owner:topLevelObjects:), rcx, r8];
+            [rbx release];
+            if (r15 != 0x0) {
+                    rbx = [[NSBundle mainBundle] retain];
+                    [rbx loadNibNamed:@"MainMenu" owner:r14 topLevelObjects:0x0];
+            }
+            else {
+                    rbx = [[AppDelegate alloc] init];
+                    [r14 setDelegate:rbx];
+            }
+            [rbx release];
+            [r14 run];
+            rdi = r14;
+    }
+    [rdi release];
+    objc_autoreleasePoolPop(r13);
+    return 0x0;
+}
+
+```
+
+
 
 # See Also 
 
