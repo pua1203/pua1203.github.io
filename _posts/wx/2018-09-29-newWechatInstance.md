@@ -11,6 +11,17 @@ subtitle: com.tencent.xinWeChat
 
 # 前言
 
+* 多开命令
+
+```objc
+nohup  /Users/devzkn/code/tweak/macTweak/macwx/macwx/TargetApp/WeChat.app/Contents/MacOS/WeChat > /dev/null  &
+
+```
+
+
+
+
+
 /Applications/WeChat.app/Contents/MacOS/WeChat
 
 
