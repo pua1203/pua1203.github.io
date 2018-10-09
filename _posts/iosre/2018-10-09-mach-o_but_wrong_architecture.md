@@ -341,9 +341,39 @@ start dump /private/var/mobile/Containers/Bundle/Application/E9E01F17-6505-4033-
   ```
 
 
+* **libswiftUIKit.dylib**
+
+  ```
+  ➜  Frameworks lipo -create ./libswiftUIKit.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftUIKit.dylib  -output  ./libswiftUIKit.dylib
+  
+  ```
+
+* **libswiftsimd.dylib**
+
+  ```
+  lipo -create ./libswiftsimd.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftsimd.dylib  -output  ./libswiftsimd.dylib
+  
+  ```
+
+
+* libswiftos.dylib
+
+  ```
+  lipo -create ./libswiftos.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftos.dylib  -output  ./libswiftos.dylib
+  
+  ```
+
+
+* **libswiftCoreData.dylib**
+
+  ```
+  lipo -create ./libswiftCoreData.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftCoreData.dylib  -output  ./libswiftCoreData.dylib
+  ```
+
+
 # See Also 
 
-
+![image](https://wx4.sinaimg.cn/large/006tBeITgy1fw23ayjxeoj31a40le11x.jpg)
 
 # other 
 
