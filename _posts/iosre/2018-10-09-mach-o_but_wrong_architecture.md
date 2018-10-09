@@ -121,8 +121,56 @@ subtitle: 解决 dumpdecrypted 之后的架构不匹配的问题
     
     ```
 
-* [VI 架构不匹配的时候报：`mach-o, but wrong architecture`](https://kunnan.github.io/2018/07/01/dumpdecrypted/#vi-%E6%9E%B6%E6%9E%84%E4%B8%8D%E5%8C%B9%E9%85%8D%E7%9A%84%E6%97%B6%E5%80%99%E6%8A%A5mach-o-but-wrong-architecture)
 
+  # [ 架构不匹配的时候报：`mach-o, but wrong architecture`](https://kunnan.github.io/2018/07/01/dumpdecrypted/#vi-%E6%9E%B6%E6%9E%84%E4%B8%8D%E5%8C%B9%E9%85%8D%E7%9A%84%E6%97%B6%E5%80%99%E6%8A%A5mach-o-but-wrong-architecture)
+
+#### file Moon : 查看架构
+
+* **➜**  **bin** **git:(****master****)** cd /Users/devzkn/decrypted/com.alimama.moon/5.6.1/Payload/Moon.app 
+
+  **➜**  **Moon.app** file Moon
+
+  Moon: Mach-O executable arm_v7
+
+此时需要使用arm64 机器进行获取新的的ipa 包。然后进行合并。
+
+
+
+#### 系统库就不用合并了：
+
+
+
+
+
+```
+start dump /private/var/mobile/Containers/Bundle/Application/E9E01F17-6505-4033-8793-2E950B778B2B/Moon.app/Frameworks/libswiftCore.dylib
+
+```
+
+* 因此只要合并以下两个二进制文件
+  * `start dump /private/var/mobile/Containers/Bundle/Application/E9E01F17-6505-4033-8793-2E950B778B2B/Moon.app/Frameworks/UNWShareKit.framework/UNWShareKit`
+  * `start dump /private/var/mobile/Containers/Bundle/Application/E9E01F17-6505-4033-8793-2E950B778B2B/Moon.app/Moon`
+
+
+
+# lipo 
+
+* **➜**  **Moon.app** lipo -create ./Moon /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Moon -output ./Moon
+
+  ```
+  ➜  Moon.app file Moon
+  Moon: Mach-O universal binary with 2 architectures: [arm_v7] [arm64:Mach-O 64-bit executable arm64]
+  Moon (for architecture armv7):	Mach-O executable arm_v7
+  Moon (for architecture arm64):	Mach-O 64-bit executable arm64
+  
+  ```
+
+
+* /Users/devzkn/decrypted/com.alimama.moon/5.6.1/Payload/Moon.app/Frameworks/UNWShareKit.framework
+
+  ```
+  lipo -create ./UNWShareKit  /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/UNWShareKit.framework/UNWShareKit -output  ./UNWShareKit
+  ```
 
 
 # See Also 
