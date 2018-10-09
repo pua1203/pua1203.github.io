@@ -11,6 +11,47 @@ subtitle: 解决 dumpdecrypted 之后的架构不匹配的问题
 
 
 
+#  前言
+
+
+
+```
+dyld: Library not loaded: @rpath/libswiftAVFoundation.dylib
+  Referenced from: /private/var/mobile/Containers/Bundle/Application/CD2B7906-AD07-40EA-B2B9-6C934B84D9D5/moon.app/Moon
+  Reason: no suitable image found.  Did find:
+  /private/var/mobile/Containers/Bundle/Application/CD2B7906-AD07-40EA-B2B9-6C934B84D9D5/moon.app/Frameworks/libswiftAVFoundation.dylib: mach-o, but wrong architecture
+```
+
+* ls -lrt Frameworks
+
+  ```
+  ➜  Frameworks ls -lrt
+  total 15000
+  -rw-r-xr-x  1 devzkn  staff    65872 Oct  9 14:33 libswiftContacts.dylib
+  -rw-r-xr-x  1 devzkn  staff   126144 Oct  9 14:33 libswiftAVFoundation.dylib
+  -rw-r-xr-x  1 devzkn  staff   333152 Oct  9 14:33 libswiftsimd.dylib
+  -rw-r-xr-x  1 devzkn  staff    66656 Oct  9 14:33 libswiftos.dylib
+  -rw-r-xr-x  1 devzkn  staff   109872 Oct  9 14:33 libswiftUIKit.dylib
+  -rw-r-xr-x  1 devzkn  staff    63536 Oct  9 14:33 libswiftQuartzCore.dylib
+  -rw-r-xr-x  1 devzkn  staff    64000 Oct  9 14:33 libswiftPhotos.dylib
+  -rw-r-xr-x  1 devzkn  staff    67328 Oct  9 14:33 libswiftObjectiveC.dylib
+  -rw-r-xr-x  1 devzkn  staff    66160 Oct  9 14:33 libswiftMetal.dylib
+  -rw-r-xr-x  1 devzkn  staff  1794640 Oct  9 14:33 libswiftFoundation.dylib
+  -rw-r-xr-x  1 devzkn  staff   188992 Oct  9 14:33 libswiftDispatch.dylib
+  -rw-r-xr-x  1 devzkn  staff    95936 Oct  9 14:33 libswiftDarwin.dylib
+  -rw-r-xr-x  1 devzkn  staff    66208 Oct  9 14:33 libswiftCoreMedia.dylib
+  -rw-r-xr-x  1 devzkn  staff    66496 Oct  9 14:33 libswiftCoreLocation.dylib
+  -rw-r-xr-x  1 devzkn  staff    62432 Oct  9 14:33 libswiftCoreImage.dylib
+  -rw-r-xr-x  1 devzkn  staff   141776 Oct  9 14:33 libswiftCoreGraphics.dylib
+  -rw-r-xr-x  1 devzkn  staff    61568 Oct  9 14:33 libswiftCoreFoundation.dylib
+  -rw-r-xr-x  1 devzkn  staff    76800 Oct  9 14:33 libswiftCoreData.dylib
+  -rw-r-xr-x  1 devzkn  staff    65728 Oct  9 14:33 libswiftCoreAudio.dylib
+  -rw-r-xr-x  1 devzkn  staff  4045984 Oct  9 14:33 libswiftCore.dylib
+  drwxr-xr-x  6 devzkn  staff      192 Oct  9 14:43 UNWShareKit.framework
+  
+  ```
+
+
 # I、先dumpdecrypted
 
 
@@ -153,7 +194,11 @@ start dump /private/var/mobile/Containers/Bundle/Application/E9E01F17-6505-4033-
 
 
 
-# lipo 
+# lipo (建议使用脚本lipo)
+
+* 更新ipa 之后，记得一起删除掉.app
+
+![image](https://wx4.sinaimg.cn/large/006tBeITgy1fw21glavi8j30b2052jrk.jpg)
 
 * **➜**  **Moon.app** lipo -create ./Moon /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Moon -output ./Moon
 
@@ -173,7 +218,150 @@ start dump /private/var/mobile/Containers/Bundle/Application/E9E01F17-6505-4033-
   ```
 
 
+* libswiftAVFoundation.dylib
+
+  ```
+  ➜  Frameworks lipo -create ./libswiftAVFoundation.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftAVFoundation.dylib  -output  ./libswiftAVFoundation.dylib 
+  
+  ```
+
+* **libswiftContacts.dylib**
+
+  ```
+  lipo -create ./libswiftContacts.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftContacts.dylib  -output  ./libswiftContacts.dylib
+  
+  ```
+
+
+* libswiftCore.dylib
+
+  ```
+  ➜  Frameworks lipo -create ./libswiftCore.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftCore.dylib  -output  ./libswiftCore.dylib 
+  
+  ```
+
+
+* libswiftCoreAudio.dylib 
+
+  ```
+  lipo -create ./libswiftCoreAudio.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftCoreAudio.dylib  -output  ./libswiftCoreAudio.dylib
+  
+  ```
+
+* libswiftCoreFoundation.dylib
+
+  ```
+  lipo -create ./libswiftCoreFoundation.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftCoreFoundation.dylib  -output  ./libswiftCoreFoundation.dylib
+  
+  ```
+
+
+* libswiftCoreGraphics.dylib
+
+  ```
+  lipo -create ./libswiftCoreGraphics.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftCoreGraphics.dylib  -output  ./libswiftCoreGraphics.dylib
+  
+  ```
+
+
+* libswiftCoreImage.dylib
+
+  ```
+  lipo -create ./libswiftCoreImage.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftCoreImage.dylib  -output  ./libswiftCoreImage.dylib
+  ```
+
+
+* libswiftCoreLocation.dylib
+
+  ```
+  lipo -create ./libswiftCoreLocation.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftCoreLocation.dylib  -output  ./libswiftCoreLocation.dylib
+  ```
+
+
+* libswiftCoreMedia.dylib 
+
+  ```
+  lipo -create ./libswiftCoreMedia.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftCoreMedia.dylib  -output  ./libswiftCoreMedia.dylib
+  
+  ```
+
+
+* libswiftDarwin.dylib 
+
+  ```
+  lipo -create ./libswiftDarwin.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftDarwin.dylib  -output  ./libswiftDarwin.dylib
+  
+  ```
+
+
+* libswiftDispatch.dylib
+
+  ```
+  lipo -create ./libswiftDispatch.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftDispatch.dylib  -output  ./libswiftDispatch.dylib
+  
+  ```
+
+
+* libswiftFoundation.dylib
+
+  ```
+  lipo -create ./libswiftFoundation.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftFoundation.dylib  -output  ./libswiftFoundation.dylib
+  
+  ```
+
+
+* libswiftMetal.dylib
+
+  ```
+  lipo -create ./libswiftMetal.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftMetal.dylib  -output  ./libswiftMetal.dylib
+  
+  ```
+
+
+* libswiftObjectiveC.dylib
+
+  ```
+  lipo -create ./libswiftObjectiveC.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftObjectiveC.dylib  -output  ./libswiftObjectiveC.dylib
+  
+  ```
+
+* libswiftPhotos.dylib
+
+  ```
+  lipo -create ./libswiftPhotos.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftPhotos.dylib  -output  ./libswiftPhotos.dylib
+  
+  ```
+
+
+* **libswiftQuartzCore.dylib**
+
+  ```
+  lipo -create ./libswiftQuartzCore.dylib /Users/devzkn/decrypted/com.alimama.moon/5.6.1/arm_v7Payload/Moon.app/Frameworks/libswiftQuartzCore.dylib  -output  ./libswiftQuartzCore.dylib
+  
+  ```
+
+
 # See Also 
+
+
+
+# other 
+
+
+
+* 以arm64 为基础进行合并的时候，发现手机没有以下动态库，因此需要合并。
+
+  ```
+  dyld: Library not loaded: @rpath/libswiftAVFoundation.dylib
+    Referenced from: /private/var/mobile/Containers/Bundle/Application/CD2B7906-AD07-40EA-B2B9-6C934B84D9D5/moon.app/Moon
+    Reason: no suitable image found.  Did find:
+  	/private/var/mobile/Containers/Bundle/Application/CD2B7906-AD07-40EA-B2B9-6C934B84D9D5/moon.app/Frameworks/libswiftAVFoundation.dylib: mach-o, but wrong architecture
+  	/private/var/mobile/Containers/Bundle/Application/CD2B7906-AD07-40EA-B2B9-6C934B84D9D5/moon.app/Frameworks/libswiftAVFoundation.dylib: mach-o, but wrong architecture
+  	/private/var/mobile/Containers/Bundle/Application/CD2B7906-AD07-40EA-B2B9-6C934B84D9D5/moon.app/Frameworks/libswiftAVFoundation.dylib: mach-o, but wrong architecture
+  ```
+
+
+
 
 >* https://kunnan.github.io/2018/07/01/dumpdecrypted/
 >* https://zhangkn.github.io/2017/12/frida/
