@@ -40,6 +40,14 @@ subtitle: 今天为什么还要读《论语》
 
 
 
+# 孔子的思想是中华文明独有的硕果
+
+
+
+* 己所不欲，勿施于人
+* 知： 完全掌控这个事情
+  * ![image](https://wx4.sinaimg.cn/large/006tBeITgy1fw6pfgdhhgj31jk0v9qv5.jpg)
+
 
 
 
