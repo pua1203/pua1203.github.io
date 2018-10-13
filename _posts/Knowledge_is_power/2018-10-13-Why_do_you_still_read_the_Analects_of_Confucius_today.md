@@ -44,8 +44,14 @@ subtitle: 今天为什么还要读《论语》
 
 
 
+* 中庸：正正好，把原则融为一体，落实到日常的行动中
+
+  ![image](https://wx4.sinaimg.cn/large/006tBeITgy1fw6pif50qtj31jk0v9u0x.jpg)
+
 * 己所不欲，勿施于人
+
 * 知： 完全掌控这个事情
+
   * ![image](https://wx4.sinaimg.cn/large/006tBeITgy1fw6pfgdhhgj31jk0v9qv5.jpg)
 
 
