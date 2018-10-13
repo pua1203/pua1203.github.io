@@ -44,7 +44,7 @@ subtitle: 今天为什么还要读《论语》
 
 
 
-* 中庸：正正好，把原则融为一体，落实到日常的行动中
+* 中庸：正正好，把原则融为一体，落实到日常的行动中(`把云端的理性原则变成我们具体的实践智慧`)
 
   ![image](https://wx4.sinaimg.cn/large/006tBeITgy1fw6pif50qtj31jk0v9u0x.jpg)
 
@@ -53,6 +53,16 @@ subtitle: 今天为什么还要读《论语》
 * 知： 完全掌控这个事情
 
   * ![image](https://wx4.sinaimg.cn/large/006tBeITgy1fw6pfgdhhgj31jk0v9qv5.jpg)
+
+
+
+
+
+
+
+
+
+# 论语早已融入了中国人的精神底层
 
 
 
