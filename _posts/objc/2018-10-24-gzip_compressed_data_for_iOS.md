@@ -176,7 +176,7 @@ subtitle: Gzip压缩数据
 
 
 
-# useing
+# using
 
 ```objc
 NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
