@@ -394,8 +394,16 @@ start dump /private/var/mobile/Containers/Bundle/Application/E9E01F17-6505-4033-
 
 
 >* https://kunnan.github.io/2018/07/01/dumpdecrypted/
+>
 >* https://zhangkn.github.io/2017/12/frida/
+>
 >* newpost 
+>
+>* # [Objective-C混淆之方法名混淆](https://www.jianshu.com/p/3a8fb6f7c55f)
+>
+>  * https://github.com/tom555cat/obfuscator-clang
+>  * http://iosre.com/t/clang-objective-c/13163
+>  * [ClangAutoStats.cpp](https://github.com/zhangkn/obfuscator-clang/blob/master/ClangAutoStats.cpp)
 >
 ```
 /Users/devzkn/bin//newpost mach-o_but_wrong_architecture 解决 dumpdecrypted 之后的架构不匹配的问题 -t iosre
