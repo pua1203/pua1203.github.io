@@ -6,7 +6,7 @@ tag: HookedOnMe
 site: https://zhangkn.github.io
 catalog: true
 author: kunnan
-subtitle: 怎样聊起来？初识的一九定律；使用设问句而非疑问句的假定法，并结合冷读法进行角色扮演
+subtitle: VII、怎样聊起来？初识的一九定律；使用设问句而非疑问句的假定法，并结合冷读法进行角色扮演
 ---
 
 
