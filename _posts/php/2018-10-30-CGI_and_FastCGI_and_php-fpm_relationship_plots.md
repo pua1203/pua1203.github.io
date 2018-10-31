@@ -36,6 +36,7 @@ subtitle: CGI、FastCGI和PHP-FPM关系图解
 >* [Docker LNMP (Nginx, PHP7/PHP5, MySQL, Redis)](https://github.com/yeszao/dnmp)
 >* [Description](https://github.com/knPHP/awesome-php)
 >* [程序员如何优雅的挣零花钱？](https://github.com/zhangkn/howto-make-more-money)
+>* [Redis设计与实现（一~五整合版）](http://get.ftqq.com/522.get)
 >* newpost 
 >
 ```
