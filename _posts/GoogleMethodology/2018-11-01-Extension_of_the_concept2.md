@@ -123,6 +123,7 @@ Z（－2）＝1^2＋2^2+3^2+…… = 1+4+9+16……＝0
 
 # See Also 
 
+>* https://weibo.com/ttarticle/p/show?id=2309404004719742824953
 >* newpost 
 >
 ```
