@@ -13,21 +13,51 @@ subtitle: 记录和一个朋友讨论的关于iOS的几个问题:新增weak修�
 
 # 前言
 
-*  **I、新增weak修饰的object属性的实现方式**
+* **I、新增weak修饰的object属性的实现方式**
+
    * 答： 利用weak的实现原理进行实现：先利用OBJC_ASSOCIATION_ASSIGN 进行修饰object；此时需要捕获对象object释放， 利用object 的强引用对象属性OriginalObject的dealloc方法捕获释放的时机，对OBJC_ASSOCIATION_ASSIGN的属性置为空。这样来保证ASSIGN不指向已经被释放的内存地址，达到weak的效果。
-*  **[ II、 消息转发的步骤？方法转发：崩溃之前会预留几个步骤](https://segmentfault.com/a/1190000012362645#articleHeader7)**
+* **[ II、 消息转发的步骤？方法转发：崩溃之前会预留几个步骤](https://segmentfault.com/a/1190000012362645#articleHeader7)**
      * 答：
          *  第一步：resolveInstanceMethod、resolveClassMethod（检查是否动态向该类添加了方法,即运行时动态添加方法）
          *  第二步：forwardingTargetForSelector（该方法返回值对象非nil或非self，则向该返回对象重新发送消息）
          *  第三步：forwardInvocation（ runtime发送methodSignatureForSelector:消息获取Selector对应的方法签名。返回值非空则通过forwardInvocation:转发消息，返回值为空则向当前对象发送doesNotRecognizeSelector:消息，程序崩溃退出）
          *  ![image](https://ws3.sinaimg.cn/large/af39b376gy1fwyj52vs2cj20st07bt9m.jpg)
-*  **III、UI滑动的时候出现卡顿的原因（ 排除手势事件冲突之外还有什么原因）？**
-    *  答：当用户频繁滑动ListView时，会在瞬间产生很多个加载数据任务导致线程池的拥堵并随即带来大量的UI更新操作，这些UI操作运行在主线程，造成了一定程度的卡顿。
-      *  解决的方法：只要让ListView在滑动的过程中加载数据停止更新UI，在滑动停止后再继续获取数据和更新UI。`UITableViewDataSource 的数据源方法进行处理BOOL canLoad = !self.tableView.dragging && !_tableView.decelerating;`
-*  **IV、UI 事件处理的NSRunLoopMode、和定时器的NSRunLoopMode 的关系是什么样的时候，可以保证它们能并发执行不影响个自的运行？**
+* **III、UI滑动的时候出现卡顿的原因（ 排除手势事件冲突之外还有什么原因）？**-----Texture (将UI操作相关的任务转移出主线程：对象的创建、调整、销毁；文本的渲染；图片的解码，图形的绘制；文本宽高的计算，视图布局的计算)
+
+    * 答：当用户频繁滑动ListView时，会在瞬间产生很多个加载数据任务导致线程池的拥堵并随即带来大量的UI更新操作，这些UI操作运行在主线程，造成了一定程度的卡顿。
+
+      * 解决的方法：只要让ListView在滑动的过程中加载数据停止更新UI，在滑动停止后再继续获取数据和更新UI。`UITableViewDataSource 的数据源方法进行处理BOOL canLoad = !self.tableView.dragging && !_tableView.decelerating;`
+
+      * https://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/
+
+        * CPU 和 GPU 不论哪个阻碍了显示流程，都会造成掉帧（由于垂直同步的机制，如果在一个 VSync 时间内，CPU 或者 GPU 没有完成内容提交，则那一帧就会被丢弃，等待下一次机会再显示，而这时显示屏会保留之前的内容不变。这就是界面卡顿的原因）
+
+        * GPU 会等待显示器的 VSync 信号发出后，才进行新的一帧渲染和缓冲区更新
+
+        * 在 VSync 信号到来后，系统图形服务会通过 CADisplayLink 等机制通知 App，App 主线程开始在 CPU 中计算显示内容，比如视图的创建、布局计算、图片解码、文本绘制等。随后 CPU 会将计算好的内容提交到 GPU 去，由 GPU 进行变换、合成、渲染。随后 GPU 会把渲染结果提交到帧缓冲区去，等待下一次 VSync 信号到来时显示到屏幕上。
+
+        * ### **CPU 资源消耗原因和解决方案**
+
+          * **对象创建**（CALayer、UIView）
+          * **对象调整**（尽量避免调整视图层次、添加和移除视图）
+          * **对象销毁**（把对象捕获到 block 中）
+          *  **布局计算**（尽量提前计算好布局，在需要时一次性调整好对应属性，而不要多次、频繁的计算和调整这些属性）
+          * **Autolayout**（`ComponentKit、AsyncDisplayKit 是 Facebook 开源的一个用于保持 iOS 界面流畅的库 ，AsyncDisplayKit has been moved and renamed: [Texture](https://github.com/texturegroup/texture/);Texture lets you move image decoding, text sizing and rendering, layout, and other expensive UI operations off the main thread, to keep the main thread available to respond to user interaction.）`
+          * **文本计算**（用 [NSAttributedString boundingRectWithSize:options:context:] 来计算文本宽高，用 -[NSAttributedString drawWithRect:options:context:] 来绘制文本）
+          * **文本渲染**（自定义文本控件，用 TextKit 或最底层的 CoreText 对文本异步绘制）
+          * **图片的解码**（在后台线程先把图片绘制到 CGBitmapContext 中，然后从 Bitmap 直接创建图片。目前常见的网络图片库都自带这个功能。）
+          *  **图像的绘制**（以 CG 开头的方法把图像绘制到画布中，然后从画布创建图片并显示这样一个过程）
+
+        * ###  **GPU 资源消耗原因和解决方案**
+
+          * **纹理的渲染**（在较短时间显示大量图片时（比如 TableView 存在非常多的图片并且快速滑动时），CPU 占用率很低，GPU 占用非常高，界面仍然会掉帧。避免这种情况的方法只能是尽量减少在短时间内大量图片的显示，尽可能将多张图片合成为一张进行显示；纹理尺寸上限都是 4096×4096）
+          * **视图的混合 (Composing)**（尽量减少视图数量和层次，并在不透明的视图里标明 opaque 属性以避免无用的 Alpha 通道合成）
+          * **图形的生成。**（尝试开启 CALayer.shouldRasterize 属性，但这会把原本离屏渲染的操作转嫁到 CPU 上去。对于只需要圆角的某些场合，也可以用一张已经绘制好的圆角图片覆盖到原本视图上面来模拟相同的视觉效果。最彻底的解决办法，就是把需要显示的图形在后台线程绘制为图片，避免使用圆角、阴影、遮罩等属性。）
+* **IV、UI 事件处理的NSRunLoopMode、和定时器的NSRunLoopMode 的关系是什么样的时候，可以保证它们能并发执行不影响个自的运行？**
      * 答：` 事件源，都是处于特定的模式下的，如果和当前runloop的模式不一致则不会得到响应；`
        ![image](https://ws3.sinaimg.cn/large/af39b376gy1fwyhr4pop1j20fk04w75e.jpg)
-*  **V、调用控制器vc的 vc.view 的时候，会触发控制器vc的哪个生命周期方法？**
+* **V、调用控制器vc的 vc.view 的时候，会触发控制器vc的哪个生命周期方法？**
+
     * 答：viewDidLoad
 
 # I、新增weak修饰的object属性的实现方式？
