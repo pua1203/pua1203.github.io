@@ -29,7 +29,8 @@ subtitle: 组件化
 
 
 
-* **中间件（组件通讯）：**
+* 基础工具类组件：基础工具类是各个互相独立，没有任何依赖的工具组件。它们和其它的工具组件、业务组件等没有任何依赖关系。这类组件例如有：对数组，字典进行异常保护的Safe组件，对数组功能进行扩展Array组件，对字符串进行加密处理的加密组件等等。
+* **中间件（组件通讯）：**为了实现组件化开发而衍生出来的一个组件,扮演中间调度者的角色
   各个业务组件拆分出来后，组件之间的通讯、传参、回调就要考虑了，此时就需要一个组件通讯的工具类来处理。
   * 消息发送机制objc_msgSend、performSelector + runtime  API 动态生成类
 * **CocoaPods远程私有库：**
@@ -39,6 +40,8 @@ subtitle: 组件化
 
 # See Also 
 
+>* [iOS 组件化开发项目框架设计，结合 MVVM 设计模式 + RAC 数据绑定 + Pod 组件管理， 实现一套实战性的iOS组件化框架](https://github.com/guangqiang-liu/iOS-Component-Pro)
+>  - [iOS 从零到一搭建组件化项目框架](https://juejin.im/post/5ba3cc0df265da0aac6fdaa0)
 >* newpost 
 >
 ```
