@@ -40,6 +40,16 @@ subtitle: 组件化
 * **宿主工程：**
   宿主工程就是一个壳，在组件库中寻找这个工程所需要的组件，然后拿过来组装成一个App。
 
+
+
+
+
+# 详细操作步骤
+
+
+
+
+
 # See Also 
 
 >* [iOS 组件化开发项目框架设计，结合 MVVM 设计模式 + RAC 数据绑定 + Pod 组件管理， 实现一套实战性的iOS组件化框架](https://github.com/guangqiang-liu/iOS-Component-Pro)
