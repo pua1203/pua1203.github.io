@@ -25,13 +25,17 @@ subtitle: 组件化
 
 
 
+![image](https://ws1.sinaimg.cn/large/af39b376gy1fx6h86htnvj20rs0jvtev.jpg)
+
+
+
+![image](https://ws1.sinaimg.cn/large/af39b376gy1fx6h9iubugj20rs086ack.jpg)
 
 
 
 
 
-
-#### 组件化必备的工具使用
+#### 组件化必备的工具使用: `要解除循环依赖，引入包管理技术cocoapods会让我们更有效率。pod不允许组件间有循环依赖，若有pod install时就会报错。`
 
 
 
