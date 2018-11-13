@@ -65,20 +65,62 @@ subtitle: 组件化
         source ‘https://github.com/CocoaPods/Specs.git’
       ```
 
-* 创建一个空业务组件工程项目：ModuleA
+  * 主工程中添加一个按钮事件，这个事件是点击 `push 到业务组件`()
+
+    ```
+        UIViewController *VC = [[CTMediator sharedInstance] EleInvoice_ViewControllerWithCallback:^(NSString *result) {
+            NSLog(@"resultA: --- %@", result);
+        }];
+        [self.navigationController pushViewController:VC animated:YES];
+    
+    ```
+
+* 创建一个空业务组件工程项目：Module
 
   * 初始化pod，初始化podspec文件
 
-* 创建一个空工程项目:ComponentMiddleware 中间调度者
+* [创建一个空工程项目: ModuleCategory，这个工程是对应业务组件的一个分类工程。](https://github.com/guangqiang-liu/iOS-Component-Pro/blob/master/Pods/ModuleBCategory/ModuleB-Category/Category/CTMediator%2BModuleB.m)
+
+  * 然后我们初始化pod，初始化podspec文件。
+
+  * 只对外暴露了两个文件。这两文件是上面的中间调度者Mediator的分类，也就是说是中间件的分类
+
+    ```
+    #import "ComponentScheduler+ModuleB.h"
+    
+    @implementation ComponentScheduler (ModuleB)
+    
+    - (UIViewController *)ModuleB_viewControllerWithCallback:(void(^)(NSString *result))callback {
+        NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+        params[@"callback"] = callback;
+        return [self performTarget:@"ModuleB" action:@"viewController" params:params shouldCacheTarget:NO];//上面的performTarget:action:params:shouldCacheTarget 函数是中间件提供的函数。因为ModuleBCategory 是 ComponentScheduler(中间件)的分类文件，所以可以调用到这个函数啦。在ModuleBCategory 工程中需要引用到了中间件工程所以我们需要在ModuleBCategory 的Podfile文件中引用 中间件组件ComponentScheduler
+    }
+    @end
+    
+    ```
+
+  * 分类实现非常的简单，就是对外暴露一个函数，然后执行`[self performTarget:@"ModuleB" action:@"viewController" params:params shouldCacheTarget:NO];` ，并将执行的返回值返回出去。
+
+  * 这个分类的作用你可以理解为我们提前约定好Target的名字和Action的名字，因为这两个名字中间件组件中Mediator会用到。
+
+* 创建一个空工程项目:CTMediator 中间调度者,使用objc_msgSend、performSelector + runtime  API 动态生成target，执行action。
 
   * 初始化pod，初始化podspec文件
 
+  * [ `performTarget:action:params:shouldCacheTarget` 吧，这个是中间件的核心函数](https://github.com/guangqiang-liu/iOS-Component-Pro/blob/master/Pods/CTMediator/CTMediator/CTMediator/CTMediator.m#L68)
 
+
+
+![image](https://ws1.sinaimg.cn/large/af39b376gy1fx6gupr95lj20sg0lcto7.jpg)
 
 # See Also 
 
 >* [iOS 组件化开发项目框架设计，结合 MVVM 设计模式 + RAC 数据绑定 + Pod 组件管理， 实现一套实战性的iOS组件化框架](https://github.com/guangqiang-liu/iOS-Component-Pro)
+>
 >  - [iOS 从零到一搭建组件化项目框架](https://juejin.im/post/5ba3cc0df265da0aac6fdaa0)
+>
+>  - [iOS MVVM开发模式 配合 RAC 信号绑定框架让开发更有趣](https://github.com/guangqiang-liu/iOS-MVVM-RAC)
+>
 >* newpost 
 >
 ```
