@@ -147,6 +147,16 @@ subtitle: 组件化
 
 
 
+#### **响应式**
+
+
+
+**ios 的appDelegate设计的有问题，它在用代理模式解决观察者模式的问题**
+
+为了实现基础组件与appDelegate分离，得对appDelegate改造.
+
+
+
 
 
 # See Also 
