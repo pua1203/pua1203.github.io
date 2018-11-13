@@ -46,7 +46,32 @@ subtitle: 组件化
 
 # 详细操作步骤
 
+* 创建一个空的iOS工程项目:MainProject；
 
+  * 初始化pod
+
+  * 在主工程MainProject的Podfile中引入我们的业务组件
+
+    * 使用私人pod库的需要在`Podflie`中添加source，指明你的版本库地址
+
+    ```
+    source 'https://github.com/zhangkn/Specs.git'
+    
+    ```
+
+    * 如果同时使用了其他的Specs库，也要声明，例如：
+
+      ```
+        source ‘https://github.com/CocoaPods/Specs.git’
+      ```
+
+* 创建一个空业务组件工程项目：ModuleA
+
+  * 初始化pod，初始化podspec文件
+
+* 创建一个空工程项目:ComponentMiddleware 中间调度者
+
+  * 初始化pod，初始化podspec文件
 
 
 
