@@ -133,6 +133,22 @@ subtitle: 组件化
 
 ![image](https://ws1.sinaimg.cn/large/af39b376gy1fx6gupr95lj20sg0lcto7.jpg)
 
+
+
+# **关于架构设计**
+
+
+
+#### **组件拆分原则**
+
+
+
+* SDK>  模块 > 业务
+
+
+
+
+
 # See Also 
 
 >* [iOS 组件化开发项目框架设计，结合 MVVM 设计模式 + RAC 数据绑定 + Pod 组件管理， 实现一套实战性的iOS组件化框架](https://github.com/guangqiang-liu/iOS-Component-Pro)
